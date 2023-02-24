@@ -1,0 +1,39 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container mt-5">
+	<mat-card>
+		<mat-card-header>
+			<mat-card-title>
+				Subir comprobante
+			</mat-card-title>
+			<mat-card-subtitle>
+				Subir la imagen del pago para validar su reservación.
+			</mat-card-subtitle>
+		</mat-card-header>
+		<mat-card-content align="center">
+
+			<h4>¡Tipo de imágenes aceptadas! (jpg,jpeg,bmp,png)</h4>
+
+			<input type="file" name="fileup" id="fileup" (change)="uploadImage($event)" style="display: none;">
+
+			<button mat-raised-button color="primary" onclick="document.getElementById('fileup').click()" id="imagenup">
+				Subir Imagen <mat-icon>upgrade</mat-icon>
+			</button>
+
+			<div id="preview"> </div>
+			<script>
+				document.getElementById('imagenup').onchange = function (e) {
+					let reader = new FileReader();
+					reader.readAsDataURL(e.target.files[0]);
+					reader.onload = function () {
+						let preview = document.getElementById('preview');
+						imagen = document.createElement('img');
+						imagen.src = reader.result;
+						imagen.style.width = "175px";
+						preview.append(imagen);
+					}
+				}
+			</script>
+		</mat-card-content>
+	</mat-card>
+</div>

@@ -1,0 +1,31 @@
+<div class="login-wrapper">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>Iniciar Sesión</mat-card-title>
+        </mat-card-header>
+        <form [formGroup]="form">
+            <mat-card-content class="d-flex flex-column">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Usuario" formControlName="userCtrl">
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-error *ngIf="userField?.hasError('required')">
+                        Favor de ingresar el <strong>usuario</strong>
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Contraseña"  formControlName="passCtrl" type="password">
+                    <mat-icon matSuffix>vpn_key</mat-icon>
+                    <mat-error *ngIf="passField?.hasError('required')">
+                        Favor de ingresar la <strong>contraseña</strong>
+                    </mat-error>
+                    <mat-error *ngIf="passField?.hasError('minLength') && passField?.hasError('maxLength')">
+                        El campo de tener 10 caracteres
+                    </mat-error>
+                </mat-form-field>
+
+            </mat-card-content>
+            <button mat-stroked-button color="accent" class="btn-block" [routerLink]="['/list/']">Iniciar Sesión</button>
+        </form>
+    </mat-card>

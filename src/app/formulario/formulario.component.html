@@ -1,0 +1,121 @@
+<div class="container m-5">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Reservación de hotel</mat-card-title>
+            <mat-card-subtitle>Reservación ahora</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="form" (ngSubmit)="agregarReserva()">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Nombres</mat-label>
+                    <input matInput placeholder="Nombres" formControlName="nameCtrl">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-error *ngIf="nameField?.hasError('pattern')">
+                        Favor de ingresar solo letras
+                    </mat-error>
+                    <mat-error *ngIf="nameField?.hasError('required') && nameField?.touched">
+                        El nombre es <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Cédula</mat-label>
+                    <input matInput placeholder="Cédula" formControlName="numberCtrl">
+                    <mat-icon matSuffix>badge</mat-icon>
+                    <mat-error *ngIf="numberField?.hasError('required') && numberField?.touched">
+                        El numero de cédula es <strong>requerido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="numberField?.hasError('minLength') && numberField?.hasError('maxLength')">
+                        El campo de tener 10 caracteres
+                    </mat-error>
+                    <mat-error *ngIf="numberField?.hasError('pattern')">
+                        Favor de ingresar solo números
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input matInput placeholder="Correo" formControlName="emailCtrl">
+                    <mat-icon matSuffix>alternate_email</mat-icon>
+                    <mat-error *ngIf="emailField?.hasError('email') ">
+                        Ingrese un correo valido
+                    </mat-error>
+                    <mat-error *ngIf="emailField?.hasError('required') && emailField?.touched">
+                        El correo es <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput placeholder="Teléfono" formControlName="phoneCtrl">
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-error *ngIf="phoneField?.hasError('required') && !phoneField?.touched">
+                        El numero de teléfono es <strong>requerido</strong>
+                    </mat-error>
+                    <mat-error *ngIf="phoneField?.hasError('minLength') && phoneField?.hasError('maxLength')">
+                        El campo de tener 10 caracteres
+                    </mat-error>
+                    <mat-error *ngIf="phoneField?.hasError('pattern')">
+                        Favor de ingresar solo números
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- <h3 class="fw-bold">Tipo de Habitación</h3>
+                <mat-radio-group aria-label="Seleccione una opción" class="d-flex flex-column">
+                    <mat-radio-button value="1" name="habitacionCtrl" formControlName="habitacionCtrl">Habitación
+                        Individual
+                    </mat-radio-button>
+                    <mat-radio-button value="2" name="habitacionCtrl" formControlName="habitacionCtrl">Habitación Doble
+                    </mat-radio-button>
+                    <mat-radio-button value="3" name="habitacionCtrl" formControlName="habitacionCtrl">Habitación Triple
+                    </mat-radio-button>
+                    <mat-radio-button value="4" name="habitacionCtrl" formControlName="habitacionCtrl">Habitación Quad
+                    </mat-radio-button>
+                    <mat-radio-button value="5" name="habitacionCtrl" formControlName="habitacionCtrl">Habitación Queen
+                    </mat-radio-button>
+                    <mat-radio-button value="6" name="habitacionCtrl" formControlName="habitacionCtrl">Habitación King
+                    </mat-radio-button>
+                    <mat-error *ngIf="habitacionField?.errors && habitacionField?.touched">
+                        <p *ngIf="habitacionField?.hasError('required')">Campo Requerido</p>
+                    </mat-error>
+                </mat-radio-group> -->
+
+                <h3 class="fw-bold">Tipo de Habitación</h3>
+                <mat-form-field appearance="fill">
+                    <mat-label>Tipo de Habitacion</mat-label>
+                    <mat-select formControlName="habitacionCtrl">
+                        <mat-option value="Habitación Individual">Habitación Individual</mat-option>
+                        <mat-option value="Habitación Doble">Habitación Doble</mat-option>
+                        <mat-option value="Habitación Triple">Habitación Triple</mat-option>
+                        <mat-option value="Habitación Cuádruple">Habitación Cuádruple</mat-option>
+                        <mat-option value="Habitación Matrimonial">Habitación Matrimonial</mat-option>
+                        <mat-option value="Suite Principal">Suite Principal</mat-option>
+                        <!-- <mat-option *ngFor="let op of habitacion" [value]="op.tipohabitacion"
+                            formControlName="habitacionCtrl">
+                            {{op.muestrahabitacion}}
+                        </mat-option> -->
+                        <!-- <mat-option *ngFor="let state of habitacionCtrl" [value]="state">{{state}}</mat-option> -->
+                    </mat-select>
+                    <mat-error *ngIf="habitacionField?.hasError('required') && !habitacionField?.touched">
+                        Campo <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- <div class="d-flex flex-column">
+                    <br>
+                    <h3 class="fw-bold">Adicionales</h3>
+                    <mat-checkbox>Productos de aseo personal</mat-checkbox>
+                    <mat-checkbox>Comida</mat-checkbox>
+                </div> -->
+                <br>
+                <mat-card-actions>
+                    <button mat-raised-button color="accent" type="submit">Enviar</button>
+                </mat-card-actions>
+            </form>
+
+            <!-- <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
+            </ngx-recaptcha2> -->
+        </mat-card-content>
+
+    </mat-card>
+</div>

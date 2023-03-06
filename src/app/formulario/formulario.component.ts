@@ -86,9 +86,11 @@ export class FormularioComponent implements OnInit {
       TipoHabitacion: this.form.value.habitacionCtrl,
       FechaRegistro: new Date()
     }
-    this._reservaHabitacion.agregarReservacion(reserva).then(()=>{
+    this._reservaHabitacion.agregarReservacion(reserva).then((res)=>{
+      console.log(res.id);
+      
       console.log('Habitacion registrada con Exito!');
-      this.router.navigate(['/subir'])
+      this.router.navigate(['/subir/'+res.id])
     }).catch(error =>{
       console.log(error);
     })

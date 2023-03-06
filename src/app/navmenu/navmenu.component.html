@@ -3,5 +3,6 @@
 <mat-icon style="text-indent: 7px">apartment</mat-icon>
 <div class="space"> </div>
 <a mat-raised-button routerLink="formulario">Reservar</a>
-<a mat-raised-button color="accent" routerLink="login">Login</a>
+<a mat-raised-button color="accent" *ngIf="!authService.isLoggedIn" routerLink="login">Login</a>
+<a mat-raised-button color="accent"  *ngIf="authService.isLoggedIn" (click)="cerrarSession()">Cerrar sesión</a>
 </mat-toolbar>

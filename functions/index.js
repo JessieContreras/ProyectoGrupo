@@ -15,7 +15,7 @@ admin.initializeApp({
 app.use(cors({ origin: true }));
 
 app.get("/hello-world", (req, res) => {
-  return res.status(200).json({ message: "Hello World!" });
+  return res.status(200).json({ message: "Hola!" });
 });
 
 // Routes

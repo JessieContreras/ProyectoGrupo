@@ -1,3 +1,11 @@
 i {
     cursor: pointer;
+}.zoom {
+    position: relative;
+    z-index: 1000000000000;
+    transition: transform .2s; 
+}
+ 
+.zoom:hover {
+    transform: scale(2); 
 }

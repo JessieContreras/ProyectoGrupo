@@ -20,6 +20,7 @@
                     <th>Teléfono</th>
                     <th>Correo</th>
                     <th>Tipo de Habitación</th>
+                    <th>Foto de pago</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -30,11 +31,15 @@
                     <td class="posicion">{{reserva.Telefono}}</td>
                     <td class="posicion">{{reserva.Correo}}</td>
                     <td class="posicion">{{reserva.TipoHabitacion}}</td>
-                    <td>
-                      <button mat-icon-button color="primary">
+                    <td class="posicion">
+                      <img  class="zoom"  width="200px" [src]="reserva.url" alt="" srcset="">
+                   </td>
+                    <td *ngIf="reserva.aceptado!=true">
+                    <!-- <td> -->
+                      <button mat-icon-button color="primary" (click)="aceptarReservas(reserva.id,reserva.url)">
                         <mat-icon>thumb_up</mat-icon>
                       </button>
-                      <button mat-icon-button color="warn" (click)="eliminarReservas(reserva.id)">
+                      <button mat-icon-button color="warn" (click)="eliminarReservas(reserva.id,reserva.url)">
                         <mat-icon>thumb_down</mat-icon>
                       </button>
                     </td>
@@ -51,9 +56,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="images">
-                    <td><img [src]="image" *ngFor="let image of images" width="170" height="190"></td>
-                    <td class="posicion" *ngFor="let reserva of reservaciones">{{reserva.FechaRegistro|date:'full'}}</td>
+                  <tr class="images" *ngFor="let image of images">
+                    <td><img [src]="image"  width="170" height="190"></td>
+                    
                   </tr>
                 </tbody>
               </table>

@@ -11,13 +11,14 @@
                     <input matInput placeholder="Nombres" formControlName="nameCtrl">
                     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                     <mat-error *ngIf="nameField?.hasError('pattern')">
-                        Favor de ingresar solo letras
+                        Favor ingresar solo letras
                     </mat-error>
                     <mat-error *ngIf="nameField?.hasError('required') && nameField?.touched">
                         El nombre es <strong>requerido</strong>
                     </mat-error>
                 </mat-form-field>
-
+             
+              
                 <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Cédula</mat-label>
                     <input matInput placeholder="Cédula" formControlName="numberCtrl">
@@ -29,7 +30,7 @@
                         El campo de tener 10 caracteres
                     </mat-error>
                     <mat-error *ngIf="numberField?.hasError('pattern')">
-                        Favor de ingresar solo números
+                        Favor ingresar solo números
                     </mat-error>
                 </mat-form-field>
 
@@ -56,7 +57,7 @@
                         El campo de tener 10 caracteres
                     </mat-error>
                     <mat-error *ngIf="phoneField?.hasError('pattern')">
-                        Favor de ingresar solo números
+                        Favor ingresar solo números
                     </mat-error>
                 </mat-form-field>
 

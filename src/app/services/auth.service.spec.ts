@@ -9,7 +9,7 @@ import 'zone.js/dist/jasmine-patch';
 import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ProyectoService } from './proyecto.service';
+import { AuthService } from './auth.service';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from "@angular/platform-browser-dynamic/testing";
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -39,12 +39,13 @@ import { getStorage } from '@firebase/storage';
 import { HttpClientModule } from '@angular/common/http';
 
 
-describe('ProyectoService', () => {
-  let service: ProyectoService;
-  let fixture: ComponentFixture<ProyectoService>;
+describe('AuthService', () => {
+  let service: AuthService;
+  let fixture: ComponentFixture<AuthService>;
 
 
   beforeEach(() => {
+    
     TestBed.configureTestingModule({
       imports: [
         BrowserModule,
@@ -78,7 +79,7 @@ describe('ProyectoService', () => {
       providers: [AngularFirestore
       ]
     });
-    service = TestBed.inject(ProyectoService);
+    service = TestBed.inject(AuthService);
   });
 
 
@@ -87,18 +88,16 @@ describe('ProyectoService', () => {
    });
  
 
-  it('Obtener reservas', async () => {
-    service.getReservas().subscribe(data => {
-      expect(data).not.toBeNull();
-    })
+  it('Servicio login credenciales falsas retorna falso', async () => {
+    let data = await   service.SignIn('test@espe.edu.ec','falsePassword');
+    expect(data).toBeFalsy;
   });
 
-  it('Obtener reserva y5wCg85bjGS21raVTxdA', async () => {
-    service.getReserva('y5wCg85bjGS21raVTxdA').subscribe(data => {
-      expect(data).not.toBeNull();
-    })
+  it('Servicio login credenciales reales retorna verdadero', async () => {
+    let data = await   service.SignIn('test@espe.edu.ec','test@espe.edu.ec');
+    expect(data).toBeTruthy();
+   
   });
-
 
   
 });

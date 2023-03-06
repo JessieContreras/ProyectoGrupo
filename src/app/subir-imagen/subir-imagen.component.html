@@ -13,13 +13,17 @@
 		<mat-card-content align="center">
 
 			<h4>¡Tipo de imágenes aceptadas! (jpg,jpeg,bmp,png)</h4>
-
+			<div class="m-3">
+				<img id="blah" [src]="imageSrc || 'http://placehold.it/180'" alt="your image" />
+			</div>
 			<input type="file" name="fileup" id="fileup" (change)="uploadImage($event)" style="display: none;">
-
-			<button mat-raised-button color="primary" onclick="document.getElementById('fileup').click()" id="imagenup">
+			<button mat-raised-button  class="m-2" color="primary" onclick="document.getElementById('fileup').click()" id="imagenup">
 				Subir Imagen <mat-icon>upgrade</mat-icon>
 			</button>
-
+			<button *ngIf="imageSrc!=''" class="m-2" mat-raised-button color="accent"
+			 (click)="SubirImagen()" id="imagenup">
+				Guardar Imagen <mat-icon>save</mat-icon>
+			</button>
 			<div id="preview"> </div>
 			<script>
 				document.getElementById('imagenup').onchange = function (e) {

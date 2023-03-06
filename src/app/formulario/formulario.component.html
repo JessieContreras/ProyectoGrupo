@@ -91,29 +91,18 @@
                         <mat-option value="Habitación Cuádruple">Habitación Cuádruple</mat-option>
                         <mat-option value="Habitación Matrimonial">Habitación Matrimonial</mat-option>
                         <mat-option value="Suite Principal">Suite Principal</mat-option>
-                        <!-- <mat-option *ngFor="let op of habitacion" [value]="op.tipohabitacion"
-                            formControlName="habitacionCtrl">
-                            {{op.muestrahabitacion}}
-                        </mat-option> -->
-                        <!-- <mat-option *ngFor="let state of habitacionCtrl" [value]="state">{{state}}</mat-option> -->
                     </mat-select>
                     <mat-error *ngIf="habitacionField?.hasError('required') && !habitacionField?.touched">
                         Campo <strong>requerido</strong>
                     </mat-error>
                 </mat-form-field>
-
-                <!-- <div class="d-flex flex-column">
-                    <br>
-                    <h3 class="fw-bold">Adicionales</h3>
-                    <mat-checkbox>Productos de aseo personal</mat-checkbox>
-                    <mat-checkbox>Comida</mat-checkbox>
-                </div> -->
                 <br>
                 <mat-card-actions>
                     <button mat-raised-button color="accent" type="submit">Enviar</button>
                 </mat-card-actions>
             </form>
 
+            <!-- Recaptcha -->
             <!-- <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
             </ngx-recaptcha2> -->
         </mat-card-content>

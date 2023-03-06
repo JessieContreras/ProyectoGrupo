@@ -2,6 +2,7 @@
     <br>
     <h1>Admin</h1>
     <mat-tab-group>
+        <!-- Seccion en de los datos de habitacion reservada -->
         <mat-tab label="Formularios">
             <table mat-table [dataSource]="dataSource" class="w-100">
                 <ng-container matColumnDef="position">
@@ -38,6 +39,7 @@
             
         </mat-tab>
 
+        <!-- Seccion de los comprobantes -->
         <mat-tab label="Imágenes"> 
             <table mat-table [dataSource]="dataSource2" class="w-100">
                 <ng-container matColumnDef="position">
